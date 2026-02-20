@@ -1,0 +1,15 @@
+# Backend
+.env
+__pycache__/
+*.pyc
+venv/
+
+# Frontend (Flutter)
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDE
+.vscode/
+.idea/
