@@ -1,20 +1,17 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
-import os
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://postgres:password@localhost:5432/volunteer_db"
-)
+DATABASE_URL = "postgresql://user:password@localhost:5432/volunteer_db"
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-SessionLocal = sessionmaker(
-    bind=engine,
-    autoflush=False,
-    autocommit=False
-)
+Base = declarative_base()
 
 
-class Base(DeclarativeBase):
-    pass
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
