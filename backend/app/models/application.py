@@ -5,6 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
 
 
+
 class Application(Base):
     __tablename__ = "applications"
 

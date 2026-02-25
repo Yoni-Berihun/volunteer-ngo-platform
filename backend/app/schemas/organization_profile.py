@@ -1,25 +1,24 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 from datetime import datetime
 
 
-class VolunteerProfileBase(BaseModel):
-    full_name: str
-    skills: Optional[List[str]] = []
-    interests: Optional[str] = None
-    availability: Optional[str] = None
-    location: Optional[str] = None
-    phone_number: Optional[str] = None
+class OrganizationProfileBase(BaseModel):
+    organization_name: str
+    description: Optional[str] = None
+    contact_email: EmailStr
+    phone_number: str
     profile_image_url: Optional[str] = None
 
 
-class VolunteerProfileCreate(VolunteerProfileBase):
+class OrganizationProfileCreate(OrganizationProfileBase):
     pass
 
 
-class VolunteerProfileRead(VolunteerProfileBase):
-    id: int
-    user_id: int
+class OrganizationProfileRead(OrganizationProfileBase):
+    id: str
+    user_id: str
+    is_verified: bool
     created_at: datetime
     updated_at: datetime
 
