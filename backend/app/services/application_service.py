@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.repositories.application_repository import ApplicationRepository
-from app.schemas.application import ApplicationCreate
+from app.schemas.applicaiton import ApplicationCreate                                                                                    
 
 
 class ApplicationService:

@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from app.core.database import engine, Base
+from app.models import user, volunteer_profile, organizational_profile, opportunity, application
+Base.metadata.create_all(bind=engine)
 from app.routers import (
     auth_router,
     user_router,
